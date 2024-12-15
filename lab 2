@@ -1,0 +1,61 @@
+#US Census Data Preprocessing
+print("\nUS Census Data Preprocessing")
+ed_count = {}
+MaritalS1_count = {}
+MaritalS2_count = {}
+Income_count = {}
+
+in_fp= open("/Users/gaurishedake/Downloads/census+income/adult.data","r")
+out_fp= open("/Users/gaurishedake/Downloads/census+income/adult.ed.data","w")
+
+while True:
+    line = in_fp.readline()
+ 
+    if not line:
+        break
+    line=line.strip()
+    A=line.split(", ")
+    if len(A) > 1:
+        out_fp.write(A[3] + "\n")
+        if A[3] in ed_count:
+            ed_count[A[3]]= ed_count[A[3]] + 1 
+        else:
+            ed_count[A[3]]=1
+        if A[5] in MaritalS1_count:
+            MaritalS1_count[A[5]]= MaritalS1_count[A[5]] + 1 
+        else:
+            MaritalS1_count[A[5]]=1
+        if A[7] in MaritalS2_count:
+            MaritalS2_count[A[7]]= MaritalS2_count[A[7]] + 1 
+        else:
+            MaritalS2_count[A[7]]=1
+        if A[14] in Income_count:
+            Income_count[A[14]]= Income_count[A[14]] + 1 
+        else:
+            Income_count[A[14]]=1
+            
+print("\n\n Educational Count -")
+print("\n",ed_count)
+
+print("\n\n Marital Status 1 -")
+print("\n",MaritalS1_count)
+
+print("\n\n Marital Status 2 -")
+print("\n",MaritalS2_count)
+
+print("\n\n Income Attribute count -")
+print("\n",Income_count)
+
+in_fp.close()
+out_fp.close()
+
+
+print("\n\nSample data from the file adult.ed.data -\n")
+filename = open("/Users/gaurishedake/Downloads/census+income/adult.ed.data", "r")
+line_count = 0
+for line in filename:
+    print("\t",line.strip())
+    line_count = line_count+ 1
+    if line_count == 10:
+        break
+filename.close()  
