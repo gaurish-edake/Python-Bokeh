@@ -1,0 +1,100 @@
+# ------------Python Lab 2 by Gaurish Edake------------
+#Concept 1: Variables
+x = 1230470165
+y = 4.1
+z = "Gaurish Edake"
+print(x)
+print(y)
+print(z)
+
+
+#Concept 2: Type Casting
+s_var = "17"
+print("value before typecasting ",s_var, "and data type : ",type(s_var))
+i_var = int(s_var)
+print("value after typecasting  ",i_var, "and data type : ",type(i_var))
+
+
+#Concept 3: Lists
+list = [62,39,20,65,42]
+print("Initial List = ", list)
+print("3rd item from the list:", list[2])
+list.append(100)
+print("Appended list:", list)
+
+
+#Concept 4: For Loops
+my_names = ["Ira", "Gaurish", "Pooja", "Mukund", "Smita"]
+for name in my_names:
+    print(name)
+my_names.append("Edake")
+print("Length of the list:", len(my_names))
+
+
+#Concept 5: Comments
+x = 1230470165          #Integer Variable
+y = 4.1                 #Float Variable
+z = "Gaurish Edake"     #String Variable
+""" 
+This is a block of comment line
+Now we are going to print the above variables
+"""
+print(x)
+print(y)
+print(z)
+
+
+#Concept 6: Dictionaries
+Directory = { "Gaurish": "623-920-6542", "Ira": "942-357-4847", "Pooja": "973-094-8277" } #phone_book_directory
+print("Phone Directory:", Directory)
+
+print("\nKeys (name):", Directory.keys())
+print("Values (phone no):", Directory.values())
+print("Items (name and phone no):", Directory.items())
+
+print("\nnew person addition")
+Directory["Raj"] = "111-222-3333"                                  #new person addition
+print("Raj's phone no:", Directory["Raj"])
+print("Updated phone Directory:", Directory)
+
+print("\nnew person deletion")
+del Directory["Raj"]                                              #new person deletion
+print("Phone book after removing Raj:", Directory)
+
+
+print("\nNames in the phone book:")
+for name in Directory.keys():
+    print(name)
+
+print("\nPhone numbers in the phone book:")
+for number in Directory.values():
+    print(number)
+
+
+#Concept 7: File Handling
+filename = open("/Users/gaurishedake/Downloads/names.txt", "r")
+for line in filename:
+    print(line.strip())
+filename.close()
+
+
+
+#Concept 8: Extracting Rows, Attributes from File
+filename = open("/Users/gaurishedake/Downloads/names.txt", "r")
+for line in filename:
+    name, age = line.split()                      #split_each_row_into_(name,age)
+    age = int(age)
+    print("Age of", name, "is", age)
+filename.close()
+
+
+#Concept 9: Pandas Data Frames
+import pandas as pd
+
+df = pd.read_csv("/Users/gaurishedake/Downloads/names.txt", sep="\t", header=None)
+print("DataFrame:\n", df)
+
+print("\nMinimum age:",df[1].min())            #1 as column header
+print("Maximum age:",df[1].max())              #1 as column header
+
+print("\n2 & 3 rows from df\n",df.loc[1:2])    #row_id starts from 0 hence 1 & 2
