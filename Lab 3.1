@@ -1,0 +1,26 @@
+#Example for output_file, output_notebook_figure_show , and various color palettes
+
+
+from bokeh.io import output_file, show, output_notebook
+from bokeh.plotting import figure
+from bokeh.palettes import Category10, Viridis, Magma
+
+
+name = ['Gaurish', 'Pooja', 'Ira', 'Mukund','Smita'] 
+age = [35,33,4,63,61]
+
+
+output_notebook()                      #for notebook output
+output_file("gaurish.html")                      #for HTML output
+
+
+f_gme = figure(width = 500, height = 500, title="Gaurish's Family Age plot", x_range= name)       # figure() function
+
+f_gme.vbar(x=name, top=age, width=0.5, color=Category10[5])          #D3 5 shades example
+show(f_gme)                                                          #Show() function
+
+f_gme.vbar(x=name, top=age, width=0.5, color=Magma[5])               #Magna 5 shades example
+show(f_gme)                                                          #Show() function
+
+f_gme.vbar(x=name, top=age, width=0.5, color=Viridis[5])             #Virdis 5 shades example
+show(f_gme)                                                          #Show() function
