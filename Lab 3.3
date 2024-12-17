@@ -1,0 +1,19 @@
+from bokeh.plotting import figure, show, output_notebook 
+import pandas as pd_gme
+
+output_notebook()
+
+df_gme = pd_gme.read_csv("/Users/gaurishedake/Downloads/names_lab3.txt", sep="\t", header=None)
+
+name = df_gme[0]
+age = df_gme[1]
+
+f_gme = figure(width = 376, height = 376, title = 'Age', x_range = name)
+
+#call the plotting function(s) via figure object
+f_gme.vbar(x=name, top =age, width = 0.56, color ='purple')
+
+#Maximize data ink for your plots
+
+#Render the visualizations
+show(f_gme)
