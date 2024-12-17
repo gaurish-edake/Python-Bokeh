@@ -1,0 +1,22 @@
+#simple_bar_chart.py file in same notebook pdf since we are allowed to submit 1 file only
+
+#imports
+from bokeh.plotting import figure, show, output_notebook      #selctive functions of the library
+
+#Create output file
+output_notebook()
+
+#read/load/preprocess your data & store it in suitable data structures
+fruits = ['Apple', ' Pear', 'Nectarines', 'Plums','Grapes','Strawbarry']
+counts= [5,3,4,2,4,6]
+
+#create a figure object
+f_gme = figure(width = 376, height = 376, title = 'Fruit Count', x_range = fruits)
+
+#call the plotting function(s) via figure object
+f_gme.vbar(x=fruits, top =counts, width = 0.56, color ='purple')
+
+#Maximize data ink for your plots
+
+#Render the visualizations
+show(f_gme)
