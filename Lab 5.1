@@ -1,0 +1,14 @@
+import pandas as pandas_gme 
+import bokeh as bo_gme
+
+output_notebook()
+
+dframe_gme = pandas_gme.read_excel("/Users/gaurishedake/Documents/MoT/Fall 2024/IFT 533/Deliverable 6 Lab 3,4,5/LAB_5.xlsx", 
+                           sheet_name = 'Australian bushfires')
+
+H_values = dframe_gme['Province'].tolist()
+V_values = dframe_gme['Affected Acres'].tolist()
+
+f_gme = figure(x_range = H_values, width = 876, height = 376, title = 'Australian bushfires')
+f_gme.vbar(x=H_values, top=V_values, width=0.36,color='gray')
+show(f_gme)
