@@ -1,0 +1,59 @@
+"""Part I & II"""
+
+from bokeh.plotting import figure, show, output_notebook 
+import pandas as pd_gme
+
+output_notebook()
+    
+df_gme = pd_gme.read_csv('/Users/gaurishedake/Downloads/census+income (1)/adult.data',header = None)
+
+IncCnt = df_gme[14].value_counts()
+xlbls_gme = IncCnt.index.tolist()
+ycnts_gme = IncCnt.tolist()
+
+f_gme = figure(width =376, height = 376, title = 'Gragh for Income Ditsribution',x_range = xlbls)
+
+f_gme.vbar(x= xlbls_gme, top = ycnts_gme, width = 0.4, color = 'purple')
+show(f_gme)
+
+
+""" checking for data from the file """
+
+import pandas as pd_gme 
+from bokeh.plotting import figure, show, output_notebook 
+df_gme = pd_gme.read_csv("/Users/gaurishedake/Downloads/kobe_bryant_points.csv")
+print(df_gme)
+
+""" Part 3"""
+
+import pandas as pd_gme 
+from bokeh.plotting import  figure, show, output_notebook 
+df_gme = pd_gme.read_csv("/Users/gaurishedake/Downloads/kobe_bryant_points.csv")
+
+Year_gme = df_gme['Year'].tolist()
+PTS_gme = df_gme['PTS'].tolist()
+
+f_gme = figure(x_range = Year_gme, width = 1000, height = 500, title = "Kobe's performance in different NB seasons")
+f_gme.line(Year_gme, PTS,color='purple', line_width=2.76)
+show(f_gme)
+
+
+""" Part 4"""
+import pandas as pd_gme 
+from bokeh.plotting import figure
+df_gme = pd_gme.read_csv("/Users/gaurishedake/Downloads/kobe_bryant_points.csv")
+
+Year_gme = df_gme['Year'].tolist()
+PTS_gme = df_gme['PTS'].tolist()
+
+
+print(Year_gme,PTS_gme)
+f_gme = figure(x_range = Year_gme, width = 1000, height = 500, title = "Kobe's performance in different NB seasons")
+
+#f_gme.square(x=Year_gme,y=PTS_gme,size= 10.76, color='purple', width=0.76)
+#Due to warning by BokehDeprecationWarning: 'square() method' was deprecated in Bokeh 3.4.0 
+#and will be removed, use "scatter(marker='square', ...) instead" instead.
+
+f_gme.scatter(x=Year_gme,y=PTS_gme,size= 10.76,marker="square", color='purple', width=0.76)
+
+show(f_gme)
