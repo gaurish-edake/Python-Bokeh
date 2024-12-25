@@ -1,0 +1,12 @@
+import pandas as pandas_gme
+import bokeh as bo_gme
+output_notebook()
+dframe_gme = pandas_gme.read_excel("/Users/gaurishedake/Documents/MoT/Fall 2024/IFT 533/Deliverable 6 Lab 3,4,5/LAB_5.xlsx",
+sheet_name = 'STGC 2020')
+H_values = dframe_gme['Years'].tolist()
+V_values = dframe_gme['Student Percentage'].tolist()
+f_gme = figure(x_range = H_values, width = 576, height = 376,
+title = 'No. of years taken to graduate college in 2020 by US students')
+f_gme.vbar(x=H_values, top=V_values, width=0.36,color='gray')
+f_gme.yaxis[0].formatter = NumeralTickFormatter(format="0%") #formats the y-axis to display percentages as given in input data
+show(f_gme)
