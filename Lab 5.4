@@ -1,0 +1,13 @@
+import bokeh as bo_gme
+output_notebook()
+MAS = [82 , 79 , 80 , 81]
+FAS = [83 , 77 , 84 , 78]
+Subj_Year = ['Math--2014', 'English--2014', 'Math--2015', 'English--2015']
+f_gme = figure(y_range=['Math--2015', 'Math--2014','English--2015', 'English--2014'],
+width=676, height=476, title="Performance Gap Between Male and Female High School Students")
+f_gme.scatter(x=MAS, y=Subj_Year, marker = 'circle', size=10, color='red', legend_label='Male')
+f_gme.scatter(x=FAS, y=Subj_Year, marker = 'circle', size=10, color='blue', legend_label='Female')
+for x in range(len(Subject_Year)):
+f_gme.line(x=[MAS[x], FAS[x]], y=[Subj_Year[x], Subj_Year[x]],
+line_width=1.76, color='gray')
+show(f_gme)
