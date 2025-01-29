@@ -1,27 +1,31 @@
 from bokeh.plotting import figure, show, output_notebook
 from bokeh.models import Range1d, ColumnDataSource, Label, LabelSet, Node
 import pandas as pd_gme
+
 output_notebook()
+
 dframe1_gme = pd_gme.read_csv('/Users/gaurishedake/Downloads/census+income (1)/adult.data',header = None)
 IncCnt = dframe1_gme[14].value_counts()
 xlbls_gme = IncCnt.index.tolist()
 ycnts_gme = IncCnt.tolist()
-f_gme = figure(width =276, height = 276, title = 'Graph for Income Ditsribution',
-x_range = xlbls_gme,y_range=Range1d(5000, 27500))
+
+
+f_gme = figure(width =276, height = 276, title = 'Graph for Income Ditsribution', x_range = xlbls_gme,y_range=Range1d(5000, 27500))
 #Maximizing data-ink
 f_gme.toolbar_location = None
 f_gme.yaxis.visible=False
 f_gme.xgrid.grid_line_color = None
 f_gme.ygrid.grid_line_color = None
 f_gme.outline_line_color = None
+
 #for label works
 src_gme = ColumnDataSource(data=dict(
-xvals_gme = xlbls_gme,
-yvals_gme= ycnts_gme,
-text_gme = ycnts_gme
-))
-lbls_gme = LabelSet(x='xvals_gme', y = 'yvals_gme', text = 'text_gme',
-source =src_gme, x_offset =-15, y_offset=5, text_font_size = "12px")
+  xvals_gme = xlbls_gme,
+  yvals_gme= ycnts_gme,
+  text_gme = ycnts_gme
+  ))
+lbls_gme = LabelSet(x='xvals_gme', y = 'yvals_gme', text = 'text_gme', source =src_gme, x_offset =-15, y_offset=5, text_font_size = "12px")
 f_gme.add_layout(lbls_gme)
+
 f_gme.vbar(x= xlbls_gme, top = ycnts_gme, width = 0.45, color = 'grey')
 show(f_gme)
