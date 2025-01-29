@@ -2,13 +2,16 @@ from bokeh.plotting import figure, show, output_notebook
 from bokeh.models import Range1d, ColumnDataSource, Label, LabelSet, Node
 import pandas as pd_gme
 from math import pi
+
 dframe1_gme = pd_gme.read_csv("/Users/gaurishedake/Downloads/kobe_bryant_points.csv")
 Year_gme = dframe1_gme['Year'].tolist()
 PTS_gme = dframe1_gme['PTS'].tolist()
+
 f_gme = figure(x_range = Year_gme, y_range = Range1d(0,3150),width = 400, height = 400,
 title = "NB seasons wise Kobe's performance")
 f_gme.line(Year_gme, PTS_gme, color='grey', line_width=2.76)
 f_gme.scatter(x=Year_gme,y=PTS_gme,size= 5.76,marker="circle", color='grey', width=0.76)
+
 #Maximizing data-ink
 f_gme.toolbar_location = None
 f_gme.yaxis.visible=False
@@ -18,14 +21,16 @@ f_gme.yaxis.minor_tick_line_color = None
 f_gme.xgrid.grid_line_color = None
 f_gme.ygrid.grid_line_color = None
 f_gme.outline_line_color = None
+
 #for label works
 src_gme = ColumnDataSource(data=dict(
-xvals_gme = Year_gme,
-yvals_gme= PTS_gme,
-text_gme = PTS_gme
-))
-lbls_gme = LabelSet(x='xvals_gme', y = 'yvals_gme', text = 'text_gme',
-source =src_gme, x_offset =0, y_offset=5, text_font_size = "12px",
-angle=pi/2) # to show lables properly and to avoiding overlapping
+  xvals_gme = Year_gme,
+  yvals_gme= PTS_gme,
+  text_gme = PTS_gme
+  ))
+
+lbls_gme = LabelSet(x='xvals_gme', y = 'yvals_gme', text = 'text_gme', source =src_gme, x_offset =0, y_offset=5, text_font_size = "12px", angle=pi/2) 
+
+# to show lables properly and to avoiding overlapping
 f_gme.add_layout(lbls_gme)
 show(f_gme)
